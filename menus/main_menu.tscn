@@ -1,0 +1,148 @@
+[gd_scene load_steps=14 format=3 uid="uid://dftcmqce0bkcy"]
+
+[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_flg6h"]
+[ext_resource type="Texture2D" uid="uid://didt0bsei3yrd" path="res://art/menu1.png" id="2_ny1yp"]
+[ext_resource type="Texture2D" uid="uid://cxc8mtek3v400" path="res://art/start_button.png" id="2_p4gg3"]
+[ext_resource type="Texture2D" uid="uid://cqwrsq1xsf8lj" path="res://art/menu2.png" id="3_a3uab"]
+[ext_resource type="Texture2D" uid="uid://663uytq2hyac" path="res://art/quit_button.png" id="3_amqke"]
+[ext_resource type="Texture2D" uid="uid://bmffc1opx0j8u" path="res://art/menu3.png" id="4_3cukg"]
+[ext_resource type="Texture2D" uid="uid://dkggwr4q0ddhi" path="res://art/menu4.png" id="5_s0ex2"]
+[ext_resource type="AudioStream" uid="uid://dse7dmolrvrf2" path="res://sound/menu.ogg" id="8_cuxqy"]
+[ext_resource type="AudioStream" uid="uid://cksq8r5r7g04s" path="res://sound/[SFX] menu_click.mp3" id="9_wjset"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_oufnw"]
+frames = 4
+frame_0/texture = ExtResource("2_ny1yp")
+frame_1/texture = ExtResource("3_a3uab")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_3cukg")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_s0ex2")
+frame_3/duration = 1.0
+
+[sub_resource type="Animation" id="Animation_sfhly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6u4yo"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tnf73"]
+_data = {
+"RESET": SubResource("Animation_sfhly"),
+"fade": SubResource("Animation_6u4yo")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_flg6h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_right = 363.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.0509804, 0.211765, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 60.0
+offset_top = -10.0
+offset_right = 260.0
+offset_bottom = 190.0
+texture = SubResource("AnimatedTexture_oufnw")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 94.0
+offset_right = 164.011
+offset_bottom = 178.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("2_p4gg3")
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Container" type="Container" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Container2" type="Container" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Container3" type="Container" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Container4" type="Container" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+icon = ExtResource("3_amqke")
+flat = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cuxqy")
+autoplay = true
+
+[node name="FadePlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tnf73")
+}
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_wjset")
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

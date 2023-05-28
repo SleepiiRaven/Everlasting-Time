@@ -1,0 +1,17 @@
+[
+	{
+		"Name":"Amber",
+		"Emotion":"Laugh",
+		"Text":"A BUTTON! I'm going to press it!"
+	},
+	{
+		"Name":"Amber",
+		"Emotion":"Sad",
+		"Text":"Wait... no, what would Noir say?"
+	},
+	{
+		"Name":"Amber",
+		"Emotion":"Neutral",
+		"Text":"\"Do not press that button or I will literally end your life.\" or something."
+	}
+]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgldsd0v8fcdo"]
+
+[ext_resource type="Script" path="res://objects/time_changing_object.gd" id="1_fdg12"]
+[ext_resource type="Texture2D" uid="uid://dskbhpjnhiaaf" path="res://art/sungate closed.png" id="2_dixv7"]
+[ext_resource type="Texture2D" uid="uid://couf1ewmgitn7" path="res://art/Nightgate closed.png" id="3_5v612"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybe7j"]
+size = Vector2(93, 16)
+
+[node name="TimeGateClosed" type="StaticBody2D" groups=["time_gate"]]
+script = ExtResource("1_fdg12")
+day = ExtResource("2_dixv7")
+night = ExtResource("3_5v612")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("2_dixv7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ybe7j")

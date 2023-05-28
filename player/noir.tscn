@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpce6vw446e12"]
+
+[ext_resource type="Script" path="res://player/noir.gd" id="1_r8pls"]
+[ext_resource type="SpriteFrames" uid="uid://06rnudcesx0t" path="res://player/noir_spool.tres" id="2_03exi"]
+[ext_resource type="AudioStream" uid="uid://ftvl41u8c51u" path="res://sound/[SFX] pick_up_needle.mp3" id="4_pwmpm"]
+[ext_resource type="AudioStream" uid="uid://l784ixgm4e3q" path="res://sound/[SFX] place_needle.mp3" id="5_osksc"]
+[ext_resource type="AudioStream" uid="uid://cj6ipm1pe7y12" path="res://sound/[SFX] spool_thread.mp3" id="6_yoeug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwlsa"]
+size = Vector2(17, 18)
+
+[node name="Noir" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_r8pls")
+max_speed = 100
+acceleration = 800
+friction = 1000
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+sprite_frames = ExtResource("2_03exi")
+animation = &"idle_down"
+autoplay = "idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_jwlsa")
+
+[node name="Interact" type="RayCast2D" parent="."]
+target_position = Vector2(0, 30)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="PickUpSpool" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_pwmpm")
+
+[node name="PlaceSpool" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_osksc")
+
+[node name="ThreadNeedle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_yoeug")

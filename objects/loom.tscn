@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmtd7fov8qgkk"]
+
+[ext_resource type="Script" path="res://objects/time_changing_object.gd" id="1_w8ep8"]
+[ext_resource type="Texture2D" uid="uid://c80ysakj68jss" path="res://art/loom_day.png" id="2_gn2le"]
+[ext_resource type="Texture2D" uid="uid://h5wkl0f2olxh" path="res://art/loom_night.png" id="3_hr1bn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i4ro"]
+size = Vector2(21, 16)
+
+[node name="Loom" type="StaticBody2D" groups=["loom"]]
+script = ExtResource("1_w8ep8")
+day = ExtResource("2_gn2le")
+night = ExtResource("3_hr1bn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gn2le")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 8)
+shape = SubResource("RectangleShape2D_3i4ro")

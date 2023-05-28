@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://cs01yh7c4mo2w"]
+
+[ext_resource type="Texture2D" uid="uid://b27rkaichq2se" path="res://art/amber_dialog_background.png" id="1_5bdny"]
+[ext_resource type="Script" path="res://objects/amber_dialog_box.gd" id="2_yjhu8"]
+[ext_resource type="Texture2D" uid="uid://dmydkmnowc4vt" path="res://art/character_background.png" id="3_7nsyu"]
+[ext_resource type="FontFile" uid="uid://cjyeiqia7y55r" path="res://art/Selenagelios.ttf" id="5_l2vqc"]
+[ext_resource type="Texture2D" uid="uid://buqlxvexkcwlc" path="res://art/noir_speech_bubble.png" id="6_se6qu"]
+[ext_resource type="AudioStream" uid="uid://bijhwnprgrst3" path="res://sound/[SFX] amber_speaking.mp3" id="7_ptwfp"]
+
+[sub_resource type="Theme" id="Theme_u2nww"]
+default_font = ExtResource("5_l2vqc")
+
+[sub_resource type="Animation" id="Animation_0fct6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(299, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_oj112"]
+resource_name = "bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(290, 35), Vector2(290, 32.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cobgx"]
+_data = {
+"RESET": SubResource("Animation_0fct6"),
+"bob": SubResource("Animation_oj112")
+}
+
+[node name="AmberDialogBox" type="TextureRect"]
+offset_top = 132.0
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_5bdny")
+script = ExtResource("2_yjhu8")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(37, 23)
+scale = Vector2(0.833333, 0.833333)
+texture = ExtResource("3_7nsyu")
+
+[node name="Character" type="Sprite2D" parent="Background"]
+position = Vector2(-7.62939e-06, 0)
+scale = Vector2(0.4, 0.4)
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 3.0
+offset_right = 243.0
+offset_bottom = 17.0
+theme = SubResource("Theme_u2nww")
+theme_override_colors/default_color = Color(0.690196, 0.454902, 0.337255, 1)
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 16.0
+offset_right = 280.0
+offset_bottom = 44.0
+theme = SubResource("Theme_u2nww")
+theme_override_colors/default_color = Color(0.690196, 0.454902, 0.337255, 1)
+
+[node name="Indicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(299, 32)
+texture = ExtResource("6_se6qu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator"]
+autoplay = "bob"
+libraries = {
+"": SubResource("AnimationLibrary_cobgx")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ptwfp")
+volume_db = -20.0

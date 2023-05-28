@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3b08bgviwklx"]
+
+[ext_resource type="Script" path="res://player/amber.gd" id="1_rlvy2"]
+[ext_resource type="SpriteFrames" uid="uid://e8wskj0rh6sy" path="res://player/amber_needle.tres" id="2_drrm6"]
+[ext_resource type="AudioStream" uid="uid://ftvl41u8c51u" path="res://sound/[SFX] pick_up_needle.mp3" id="4_3fqjk"]
+[ext_resource type="AudioStream" uid="uid://l784ixgm4e3q" path="res://sound/[SFX] place_needle.mp3" id="5_52g8r"]
+[ext_resource type="AudioStream" uid="uid://cj6ipm1pe7y12" path="res://sound/[SFX] spool_thread.mp3" id="6_1gsgf"]
+[ext_resource type="PackedScene" uid="uid://kbaa2whqug1h" path="res://objects/rope.tscn" id="6_x272c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agrlj"]
+size = Vector2(17, 18)
+
+[node name="Amber" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_rlvy2")
+max_speed = 100
+acceleration = 800
+friction = 1000
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+sprite_frames = ExtResource("2_drrm6")
+animation = &"idle_down"
+autoplay = "idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_agrlj")
+
+[node name="Interact" type="RayCast2D" parent="."]
+target_position = Vector2(0, 30)
+hit_from_inside = true
+
+[node name="PickUpNeedle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3fqjk")
+
+[node name="PlaceNeedle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_52g8r")
+
+[node name="ThreadTimePillar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_1gsgf")
+
+[node name="Rope" parent="." instance=ExtResource("6_x272c")]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(4, -18)
+
+[node name="GUI" type="CanvasLayer" parent="."]

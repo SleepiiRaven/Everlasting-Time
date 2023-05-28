@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1aw3c0sti8hh"]
+
+[ext_resource type="Texture2D" uid="uid://ct7pvdhdbosei" path="res://art/spool.png" id="1_eqevg"]
+[ext_resource type="Script" path="res://objects/spool.gd" id="1_m381x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrlt4"]
+size = Vector2(16, 16)
+
+[node name="Spool" type="StaticBody2D" groups=["spool"]]
+script = ExtResource("1_m381x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eqevg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hrlt4")

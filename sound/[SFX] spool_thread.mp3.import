@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cj6ipm1pe7y12"
+path="res://.godot/imported/[SFX] spool_thread.mp3-bd634cb05dacdd26aaed77cba5052ee6.mp3str"
+
+[deps]
+
+source_file="res://sound/[SFX] spool_thread.mp3"
+dest_files=["res://.godot/imported/[SFX] spool_thread.mp3-bd634cb05dacdd26aaed77cba5052ee6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

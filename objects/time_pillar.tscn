@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cenq2f3wa4ll0"]
+
+[ext_resource type="Script" path="res://objects/time_pillar.gd" id="1_ek7ps"]
+[ext_resource type="Texture2D" uid="uid://c1ntddx288hcu" path="res://art/time_pillar.png" id="1_wcdhy"]
+[ext_resource type="Texture2D" uid="uid://bmpfjvhmovf3j" path="res://art/time_pillar_night.png" id="3_0f5f8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl0k0"]
+size = Vector2(16, 16)
+
+[node name="TimePillar" type="StaticBody2D" groups=["time_pillar"]]
+script = ExtResource("1_ek7ps")
+day = ExtResource("3_0f5f8")
+night = ExtResource("1_wcdhy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+texture = ExtResource("1_wcdhy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_xl0k0")

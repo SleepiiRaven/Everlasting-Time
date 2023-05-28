@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://v84t2tjn1yck"]
+
+[ext_resource type="Texture2D" uid="uid://csfl7bag5xjkb" path="res://art/tree_day.png" id="1_th6ty"]
+[ext_resource type="Script" path="res://objects/tree.gd" id="2_4412h"]
+
+[node name="Tree" type="Sprite2D"]
+texture = ExtResource("1_th6ty")
+script = ExtResource("2_4412h")

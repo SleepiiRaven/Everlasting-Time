@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://kbaa2whqug1h"]
+
+[ext_resource type="Texture2D" uid="uid://c0ew5f23jb1ob" path="res://art/rope.png" id="1_ilf8a"]
+
+[node name="Rope" type="Line2D"]
+texture_repeat = 2
+width = 20.0
+texture = ExtResource("1_ilf8a")
+texture_mode = 1

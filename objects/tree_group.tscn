@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjisvpg5ulgmy"]
+
+[ext_resource type="PackedScene" uid="uid://v84t2tjn1yck" path="res://objects/tree_figure.tscn" id="1_mq213"]
+
+[node name="TreeGroup" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Tree" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(65, 18)
+
+[node name="Tree2" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(16, 11)
+
+[node name="Tree3" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(33, 51)
+
+[node name="Tree4" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(91, 52)
+
+[node name="Tree5" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(108, 11)
+
+[node name="Tree6" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(76, -24)
+
+[node name="Tree7" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(-1, 94)
+
+[node name="Tree8" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(-38, 39)
+
+[node name="Tree9" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(-69, -15)
+
+[node name="Tree10" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(-11, -66)
+
+[node name="Tree11" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(28, -41)
+
+[node name="Tree12" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(-62, -60)
+
+[node name="Tree13" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(-77, 30)
+
+[node name="Tree14" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(-50, 81)
+
+[node name="Tree15" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(-31, -7)
+
+[node name="Tree16" parent="." instance=ExtResource("1_mq213")]
+position = Vector2(-8, 52)
